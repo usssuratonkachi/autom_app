@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704511975388",
+    "project_id": "automappregistration",
+    "storage_bucket": "automappregistration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704511975388:android:6515517409d241f901b919",
+        "android_client_info": {
+          "package_name": "com.example.autom_app_registration"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF74nAnmkUn5dKJy0fQnmJPjEG5xO-w3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
