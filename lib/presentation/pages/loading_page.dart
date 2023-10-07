@@ -37,7 +37,7 @@ class _LoadingPageState extends State<LoadingPage> {
               SizedBox(
                 width: double.infinity,
                 height: 625,
-                child: Image.asset('assets/images/Wheel.png'),
+                child: Image.asset('assets/images/Wheel.png', fit: BoxFit.cover,),
               ),
               const SizedBox(
                 height: 303,

@@ -16,11 +16,14 @@ class _AnimatedLogoState extends State<AnimatedLogo> {
 
   @override
   void initState() {
-
     super.initState();
     Future.delayed(const Duration(seconds: 1), () {
       turns += 1 / 2;
-      setState(() {});
+      if(mounted){
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          setState(() {});
+        });
+      }
     });
   }
 

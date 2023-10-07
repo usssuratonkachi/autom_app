@@ -37,9 +37,7 @@ class _RegistrationPageViewState extends State<RegistrationPageView> {
   void initState() {
 
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      context.read<AuthenticationBloc>().add(AuthenticationWaiting());
-    });
+
   }
 
   @override

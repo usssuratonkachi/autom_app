@@ -20,30 +20,35 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppInitialEvent>(_onInitial);
 
     _userSubscription = _authenticationRepository.user.listen(
-      (user) => add(_AppUserChanged(user)),
+          (user) => add(_AppUserChanged(user)),
     );
   }
 
   final AuthenticationRepository _authenticationRepository;
   late final StreamSubscription<User> _userSubscription;
 
-  void _onUserChanged(_AppUserChanged event, Emitter<AppState> emit) {
-    emit(
-      event.user.isNotEmpty
-          ? AppAuthenticated(user: event.user)
-          :  AppUnauthenticated(user: _authenticationRepository.currentUser),
-    );
+  void _onUserChanged(_AppUserChanged event, Emitter<AppState> emit) async  {
+    await  Future.delayed(const Duration(seconds: 2), () {
+      emit(
+        event.user.isNotEmpty
+            ? AppAuthenticated(user: event.user)
+            :  AppUnauthenticated(user: _authenticationRepository.currentUser),
+      );
+    });
+
   }
 
   void _onLogoutRequested(AppLogoutRequested event, Emitter<AppState> emit) {
     unawaited(_authenticationRepository.logOut());
   }
 
-  void _onInitial(AppInitialEvent event, Emitter<AppState> emit) {
-    print('1231231');
-    _authenticationRepository.currentUser.isNotEmpty
-        ? emit(AppAuthenticated(user: _authenticationRepository.currentUser))
-        : emit(const AppUnauthenticated(user: User.empty));
+  void _onInitial(AppInitialEvent event, Emitter<AppState> emit)  async {
+    await  Future.delayed(const Duration(seconds: 2), () {
+      _authenticationRepository.currentUser.isNotEmpty
+          ? emit(AppAuthenticated(user: _authenticationRepository.currentUser))
+          : emit(const AppUnauthenticated(user: User.empty));
+    });
+
   }
 
   @override

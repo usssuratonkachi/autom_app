@@ -5,7 +5,6 @@ import 'package:autom_app_registration/presentation/pages/loading_page.dart';
 import 'package:autom_app_registration/presentation/pages/registration_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -21,7 +20,8 @@ class App extends StatelessWidget {
         value: _authenticationRepository,
         child: BlocProvider(
           create: (_) =>
-              AppBloc(authenticationRepository: _authenticationRepository)..add(const AppInitialEvent()),
+              AppBloc(authenticationRepository: _authenticationRepository)
+                ..add(const AppInitialEvent()),
           child: const AppView(),
         ));
   }
@@ -41,26 +41,13 @@ class _AppViewState extends State<AppView> {
         debugShowCheckedModeBanner: false,
         home: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
-            // switch (AppState) {
-            //   case AppAuthenticated:
-            //     return const HomePage();
-            //   case AppUnauthenticated:
-            //     print(124124214);
-            //     return const RegistrationPage();
-            //   case AppInitial:
-            //     return const LoadingPage();
-            //   default:
-            //     return const LoadingPage();
-            // }
-            if (state is AppAuthenticated){
+            if (state is AppAuthenticated) {
               return const HomePage();
             }
-            if (state is AppUnauthenticated){
-              print(123124);
+            if (state is AppUnauthenticated) {
               return const RegistrationPage();
             }
             return const LoadingPage();
-
           },
         ));
   }
